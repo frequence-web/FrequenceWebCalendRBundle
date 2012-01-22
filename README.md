@@ -53,3 +53,20 @@ Event management
 
 To manage your events, you have to create a provider and an event class. See [CalendR doc](http://github.com/yohang/CalendR)
 
+### Declare your provider
+
+This bundle allows you to easily add your providers to the CalendR event manager. Your provider have to be a service.
+
+
+```yaml
+#config.yml
+
+services:
+    my_event_provider:
+        class: Your\Bundle\Event\Provider
+
+frequence_web_calend_r:
+    event_providers:
+        - my_event_provider
+
+```
