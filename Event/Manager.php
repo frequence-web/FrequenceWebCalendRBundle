@@ -3,36 +3,30 @@
 namespace FrequenceWeb\Bundle\CalendRBundle\Event;
 
 use CalendR\Event\Manager as BaseManager;
-use CalendR\Period\PeriodInterface;
+use CalendR\Event\Provider\ProviderInterface;
 use CalendR\Event\Provider\Aggregate;
 use CalendR\Event\Provider\Cache;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Manager extends BaseManager
 {
     /**
-     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     * Allows to add a provider to the stack.
+     *
+     * @param \CalendR\Event\Provider\ProviderInterface $provider
+     * @return Manager
      */
-    private $container;
-
-    public function __construct(ContainerInterface $container)
+    public function addProvider(ProviderInterface $provider)
     {
-        $this->container = $container;
-
-        $providers = array();
-        foreach ($container->getParameter('frequence_web_calend_r.event_providers') as $provider) {
-            $providers[] = $container->get($provider);
+        if (null === $this->provider) {
+            $this->provider = new Cache(new Aggregate(array($provider)));
+        } else if ($this->provider instanceof Cache && $this->provider->getProvider() instanceof Aggregate) {
+            $this->provider->getProvider()->add($provider);
+        } else if ($this->provider instanceof Aggregate) {
+            $this->provider->add($provider);
+        } else {
+            $this->provider = new Cache(new Aggregate(array($this->provider, $provider)));
         }
 
-        $this->setProvider(new Cache(new Aggregate($providers)));
-    }
-
-    /**
-     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
-     */
-    public function setContainer(ContainerInterface $container)
-    {
-        $this->container = $container;
+        return $this;
     }
 }

@@ -18,13 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $builder = new TreeBuilder();
-        $builder->root('frequence_web_calend_r')
-            ->children()
-                ->arrayNode('event_providers')
-                    ->prototype('scalar')->end()
-                ->end()
-            ->end()
-        ;
+        $builder->root('frequence_web_calend_r');
 
         return $builder;
     }

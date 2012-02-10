@@ -24,7 +24,5 @@ class FrequenceWebCalendRExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
-
-        $container->setParameter('frequence_web_calend_r.event_providers', $config['event_providers']);
     }
 }
