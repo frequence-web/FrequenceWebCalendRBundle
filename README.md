@@ -64,9 +64,7 @@ This bundle allows you to easily add your providers to the CalendR event manager
 services:
     my_event_provider:
         class: Your\Bundle\Event\Provider
-
-frequence_web_calend_r:
-    event_providers:
-        - my_event_provider
+        tags:
+            - { name: calendr.event_provider }
 
 ```
