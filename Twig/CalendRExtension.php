@@ -44,9 +44,9 @@ class CalendRExtension extends \Twig_Extension
         return $this->factory->getMonth($year, $month, $day);
     }
 
-    public function getEvents($period)
+    public function getEvents($period, array $options = array())
     {
-        return $this->factory->getEvents($period);
+        return $this->factory->getEvents($period, $options);
     }
 
     public function getName()
