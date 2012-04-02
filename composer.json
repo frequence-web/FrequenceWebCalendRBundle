@@ -1,0 +1,21 @@
+{
+    "name": "frequence-web/calendr-bundle",
+    "description": "This bundle provides an integration of the CalendR library",
+    "keywords": ["calendar"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yohan Giarelli",
+            "homepage": "http://github.com/yohang"
+        }
+    ],
+    "require": {
+        "yohang/calendr": ">=1.0",
+        "symfony/framework-bundle": "2.*"
+    },
+    "autoload": {
+        "psr-0": { "FrequenceWeb\\Bundle\\CalendRBundle": "" }
+    },
+    "target-dir": "FrequenceWeb/Bundle/CalendRBundle"
+}
