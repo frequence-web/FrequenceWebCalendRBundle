@@ -7,7 +7,7 @@
 
     <parameters>
         <parameter key="frequence_web_calendr.factory.class">CalendR\Calendar</parameter>
-        <parameter key="frequence_web_calendr.event.manager.class">FrequenceWeb\Bundle\CalendRBundle\Event\Manager</parameter>
+        <parameter key="frequence_web_calendr.event.manager.class">CalendR\Event\Manager</parameter>
         <parameter key="frequence_web_calendr.twig_extension.class">FrequenceWeb\Bundle\CalendRBundle\Twig\CalendRExtension</parameter>
     </parameters>
 

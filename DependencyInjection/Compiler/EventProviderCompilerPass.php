@@ -6,9 +6,6 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-use CalendR\Event\Provider\Cache;
-use CalendR\Event\Provider\Aggregate;
-
 class EventProviderCompilerPass implements CompilerPassInterface
 {
     /**
