@@ -8,13 +8,11 @@
     <parameters>
         <parameter key="frequence_web_calendr.factory.class">CalendR\Calendar</parameter>
         <parameter key="frequence_web_calendr.event.manager.class">CalendR\Event\Manager</parameter>
-        <parameter key="frequence_web_calendr.twig_extension.class">FrequenceWeb\Bundle\CalendRBundle\Twig\CalendRExtension</parameter>
+        <parameter key="frequence_web_calendr.twig_extension.class">CalendR\Extension\Twig\CalendRExtension</parameter>
     </parameters>
 
     <services>
-        <service id="frequence_web_calendr.event.manager" class="%frequence_web_calendr.event.manager.class%">
-            <argument type="service" id="service_container" />
-        </service>
+        <service id="frequence_web_calendr.event.manager" class="%frequence_web_calendr.event.manager.class%" />
 
         <service id="frequence_web_calendr.factory" class="%frequence_web_calendr.factory.class%">
             <call method="setEventManager">
