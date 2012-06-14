@@ -23,7 +23,7 @@ class EventProviderCompilerPass implements CompilerPassInterface
         $eventManager = $container->getDefinition('frequence_web_calendr.event.manager');
 
         foreach ($container->findTaggedServiceIds('calendr.event_provider') as $id => $attributes) {
-            $eventManager->addMethodCall('addProvider', array(new Reference($id)));
+            $eventManager->addMethodCall('addProvider', array($id, new Reference($id)));
         }
     }
 }
