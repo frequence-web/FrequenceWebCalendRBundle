@@ -38,7 +38,7 @@ public function indexAction()
                         &nbsp;
                     {% endif %}
                 </td>
-            {% endfor %>
+            {% endfor %}
         </tr>
     {% endfor %}
 
