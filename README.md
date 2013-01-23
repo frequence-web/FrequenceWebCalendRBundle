@@ -1,5 +1,4 @@
-FrequenceWebCalendRBundle
-=========================
+# FrequenceWebCalendRBundle [![Build Status](https://secure.travis-ci.org/frequence-web/FrequenceWebCalendRBundle.png?branch=master)](http://travis-ci.org/frequence-web/FrequenceWebCalendRBundle)
 
 This bundle provides [CalendR](http://github.com/yohang/CalendR.git) integration.
 
