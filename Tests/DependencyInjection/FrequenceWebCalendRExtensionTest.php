@@ -2,6 +2,7 @@
 
 namespace FrequenceWeb\Bundle\CalendRBundle\Tests\DependencyInjection;
 
+use CalendR\Period\Day;
 use FrequenceWeb\Bundle\CalendRBundle\DependencyInjection\FrequenceWebCalendRExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -30,8 +31,14 @@ class FrequenceWebCalendRExtensionTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($container->hasDefinition('frequence_web_calendr.twig_extension'));
         $this->assertTrue($container->hasAlias('calendr'));
 
-        $this->assertTrue(
-            $container->getDefinition('frequence_web_calendr.factory')->hasMethodCall('setEventManager')
-        );
+        $factory = $container->getDefinition('frequence_web_calendr.factory');
+        $this->assertTrue($factory->hasMethodCall('setEventManager'));
+        $this->assertTrue($factory->hasMethodCall('setFirstWeekday'));
+
+        foreach ($factory->getMethodCalls() as $call) {
+            if ('setFirstWeekday' === $call[0]) {
+                $this->assertSame(Day::MONDAY, $call[1][0]);
+            }
+        }
     }
 }
