@@ -31,7 +31,7 @@ public function indexAction()
         <tr>
             {% for day in week %}
                 <td>
-                    {% if month.contains(day) %}
+                    {% if month.contains(day.begin) %}
                         {{ day.begin.format('d') }}
                     {% else %}
                         &nbsp;
