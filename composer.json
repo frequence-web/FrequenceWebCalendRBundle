@@ -16,6 +16,5 @@
     },
     "autoload": {
         "psr-4": { "FrequenceWeb\\Bundle\\CalendRBundle\\": "" }
-    },
-    "target-dir": "FrequenceWeb/Bundle/CalendRBundle"
+    }
 }
