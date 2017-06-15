@@ -12,10 +12,9 @@
     ],
     "require": {
         "yohang/calendr": ">=1.0",
-        "symfony/framework-bundle": "2.*"
+        "symfony/framework-bundle": "^2.8 || ^3.0"
     },
     "autoload": {
-        "psr-0": { "FrequenceWeb\\Bundle\\CalendRBundle": "" }
-    },
-    "target-dir": "FrequenceWeb/Bundle/CalendRBundle"
+        "psr-4": { "FrequenceWeb\\Bundle\\CalendRBundle\\": "" }
+    }
 }
