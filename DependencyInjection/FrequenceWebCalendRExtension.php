@@ -2,6 +2,8 @@
 
 namespace FrequenceWeb\Bundle\CalendRBundle\DependencyInjection;
 
+use CalendR\Event\Provider\ProviderInterface;
+use FrequenceWeb\Bundle\CalendRBundle\DependencyInjection\Compiler\EventProviderCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -28,5 +30,10 @@ class FrequenceWebCalendRExtension extends Extension
         $container
             ->getDefinition('frequence_web_calendr.factory')
             ->addMethodCall('setFirstWeekday', [$config['periods']['default_first_weekday']]);
+
+        if (\method_exists($container, 'registerForAutoconfiguration')) {
+            $container->registerForAutoconfiguration(ProviderInterface::class)
+                      ->addTag(EventProviderCompilerPass::TAG);
+        }
     }
 }

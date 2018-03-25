@@ -8,6 +8,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class EventProviderCompilerPass implements CompilerPassInterface
 {
+    const TAG = 'calendr.event_provider';
+
     /**
      * Process the services tagged with "calendr.event_provider" to add
      * them to the calendR event handling
@@ -22,7 +24,7 @@ class EventProviderCompilerPass implements CompilerPassInterface
     {
         $eventManager = $container->getDefinition('frequence_web_calendr.event.manager');
 
-        foreach ($container->findTaggedServiceIds('calendr.event_provider') as $id => $attributes) {
+        foreach ($container->findTaggedServiceIds(self::TAG) as $id => $attributes) {
             $providerAlias = isset($attributes[0]) && isset($attributes[0]['alias']) ? $attributes[0]['alias'] : $id;
             $eventManager->addMethodCall('addProvider', [$providerAlias, new Reference($id)]);
         }
