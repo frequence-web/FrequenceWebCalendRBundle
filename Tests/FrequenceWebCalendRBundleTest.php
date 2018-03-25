@@ -2,12 +2,15 @@
 
 namespace FrequenceWeb\Bundle\CalendRBundle\Tests;
 
+use FrequenceWeb\Bundle\CalendRBundle\DependencyInjection\Compiler\EventProviderCompilerPass;
 use FrequenceWeb\Bundle\CalendRBundle\FrequenceWebCalendRBundle;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @author Yohan Giarelli <yohan@frequence-web.fr>
+ * @author Yohan Giarelli <yohan@un-zero-un.fr>
  */
-class FrequenceWebCalendRBundleTest extends \PHPUnit_Framework_TestCase
+class FrequenceWebCalendRBundleTest extends TestCase
 {
     /**
      * @var FrequenceWebCalendRBundle
@@ -21,15 +24,12 @@ class FrequenceWebCalendRBundleTest extends \PHPUnit_Framework_TestCase
 
     public function testBuild()
     {
-        $container = $this->getMock(
-            'Symfony\Component\DependencyInjection\ContainerBuilder',
-            array('addCompilerPass')
-        );
+        $container = $this->getMockBuilder(ContainerBuilder::class)->setMethods(['addCompilerPass'])->getMock();
 
         $container
             ->expects($this->once())
             ->method('addCompilerPass')
-            ->with($this->isInstanceOf('FrequenceWeb\Bundle\CalendRBundle\DependencyInjection\Compiler\EventProviderCompilerPass'));
+            ->with($this->isInstanceOf(EventProviderCompilerPass::class));
 
         $this->object->build($container);
     }

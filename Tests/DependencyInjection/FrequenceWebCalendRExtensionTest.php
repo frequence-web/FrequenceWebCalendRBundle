@@ -4,12 +4,13 @@ namespace FrequenceWeb\Bundle\CalendRBundle\Tests\DependencyInjection;
 
 use CalendR\Period\Day;
 use FrequenceWeb\Bundle\CalendRBundle\DependencyInjection\FrequenceWebCalendRExtension;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @author Yohan Giarelli <yohan@frequence-web.fr>
+ * @author Yohan Giarelli <yohan@un-zero-un.fr>
  */
-class FrequenceWebCalendRExtensionTest extends \PHPUnit_Framework_TestCase
+class FrequenceWebCalendRExtensionTest extends TestCase
 {
     /**
      * @var FrequenceWebCalendRExtension
@@ -24,7 +25,7 @@ class FrequenceWebCalendRExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLoad()
     {
         $container = new ContainerBuilder;
-        $this->object->load(array(), $container);
+        $this->object->load([], $container);
 
         $this->assertTrue($container->hasDefinition('frequence_web_calendr.event.manager'));
         $this->assertTrue($container->hasDefinition('frequence_web_calendr.factory'));

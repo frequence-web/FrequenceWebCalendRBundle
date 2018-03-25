@@ -12,15 +12,15 @@
     </parameters>
 
     <services>
-        <service id="frequence_web_calendr.event.manager" class="%frequence_web_calendr.event.manager.class%" />
+        <service id="frequence_web_calendr.event.manager" class="%frequence_web_calendr.event.manager.class%" public="true" />
 
-        <service id="frequence_web_calendr.factory" class="%frequence_web_calendr.factory.class%">
+        <service id="frequence_web_calendr.factory" class="%frequence_web_calendr.factory.class%" public="true">
             <call method="setEventManager">
                 <argument type="service" id="frequence_web_calendr.event.manager" />
             </call>
         </service>
 
-        <service id="calendr" alias="frequence_web_calendr.factory" />
+        <service id="calendr" alias="frequence_web_calendr.factory" public="true" />
         <service id="frequence_web_calendr.twig_extension" class="%frequence_web_calendr.twig_extension.class%">
             <argument type="service" id="frequence_web_calendr.factory" />
             <tag name="twig.extension" />

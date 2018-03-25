@@ -20,13 +20,13 @@ class FrequenceWebCalendRExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.xml');
 
         $container
             ->getDefinition('frequence_web_calendr.factory')
-            ->addMethodCall('setFirstWeekday', array($config['periods']['default_first_weekday']));
+            ->addMethodCall('setFirstWeekday', [$config['periods']['default_first_weekday']]);
     }
 }

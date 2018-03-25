@@ -24,7 +24,7 @@ class EventProviderCompilerPass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds('calendr.event_provider') as $id => $attributes) {
             $providerAlias = isset($attributes[0]) && isset($attributes[0]['alias']) ? $attributes[0]['alias'] : $id;
-            $eventManager->addMethodCall('addProvider', array($providerAlias, new Reference($id)));
+            $eventManager->addMethodCall('addProvider', [$providerAlias, new Reference($id)]);
         }
     }
 }
