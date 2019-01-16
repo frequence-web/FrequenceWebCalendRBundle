@@ -18,8 +18,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $builder = new TreeBuilder();
-        $root = $builder->root('frequence_web_calend_r');
+        $builder = new TreeBuilder('frequence_web_calend_r');
+        $root = method_exists($builder, 'getRootNode') ? $builder->getRootNode() : $builder->root('frequence_web_calend_r');
 
         $root
             ->children()
